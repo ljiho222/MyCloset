@@ -1,10 +1,18 @@
 package com.example.my_closet;
 
 public class Newcloset {
+    private String profile;
     private String name;
-    private String id;
+    private String style;
+    private String location;
 
-    public Newcloset(){}
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
 
     public String getName() {
         return name;
@@ -14,11 +22,19 @@ public class Newcloset {
         this.name = name;
     }
 
-    public String getId() {
-        return id;
+    public String getStyle() {
+        return style;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setStyle(String style) {
+        this.style = style;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }
