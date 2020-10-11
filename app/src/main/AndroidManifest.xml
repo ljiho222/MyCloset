@@ -19,6 +19,7 @@
         <activity android:name=".Style" />
         <activity android:name=".Search" />
         <activity android:name=".Closet" />
+        <activity android:name=".ClosetMain"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
