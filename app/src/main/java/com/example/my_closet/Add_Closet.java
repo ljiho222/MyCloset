@@ -15,7 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Add extends AppCompatActivity {
+public class Add_Closet extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -27,7 +27,7 @@ public class Add extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add);
+        setContentView(R.layout.activity_add_closet);
 
         recyclerView = findViewById(R.id.recyclerView);//아이디 연결
         recyclerView.setHasFixedSize(true);//성능 강화

@@ -31,7 +31,7 @@ public class ClosetMain extends AppCompatActivity {
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ClosetMain.this, Add.class);
+                Intent intent = new Intent(ClosetMain.this, Add_Closet.class);
                 startActivity(intent); // 옷장 추가 인텐트
             }
         });
