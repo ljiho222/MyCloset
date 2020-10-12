@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ClosetMain extends AppCompatActivity {
 
     private Button btn_add;
+    private ImageButton btn_search;
     private ImageButton btn_closet;
 
     @Override
@@ -23,7 +24,7 @@ public class ClosetMain extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ClosetMain.this, Closet.class);
-                startActivity(intent); // 옷장 추가 인텐트
+                startActivity(intent); // 옷장 상세 인텐트
             }
         });
 
@@ -35,6 +36,13 @@ public class ClosetMain extends AppCompatActivity {
                 startActivity(intent); // 옷장 추가 인텐트
             }
         });
-
+        btn_search = findViewById(R.id.btn_search);
+        btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ClosetMain.this, Search.class);
+                startActivity(intent); // 옷 검색
+            }
+        });
     }
 }
