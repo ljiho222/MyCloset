@@ -3,36 +3,71 @@ package com.example.my_closet;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClosetMain extends AppCompatActivity {
 
+    private ViewPager viewPager;
+    private ViewPagerAdapter adapter;
     private Button btn_add;
     private ImageButton btn_search;
     private ImageButton btn_closet;
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = firebaseDatabase.getReference();
+    private User user;
+    private ArrayList<Newcloset> Newclosets = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_closetmain);
 
-        btn_closet = findViewById(R.id.btn_closet);
-        btn_closet.setOnClickListener(new View.OnClickListener() {
+        viewPager=(ViewPager)findViewById(R.id.view);
+        adapter = new ViewPagerAdapter(this, Newclosets, user);
+        viewPager.setAdapter(adapter);
+        user = (User)getIntent().getSerializableExtra("userInfo");
+
+        databaseReference.child("Closets").child(user.getUserName()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ClosetMain.this, Closet.class);
-                startActivity(intent); // 옷장 상세 인텐트
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Newclosets.clear();
+                for(DataSnapshot snapshot:dataSnapshot.getChildren()){
+                    Newcloset newcloset = snapshot.getValue(Newcloset.class);
+                    Newclosets.add(newcloset);
+                }
+
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
+
+
 
         btn_add = findViewById(R.id.btn_add);
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ClosetMain.this, Add_Closet.class);
+                intent.putExtra("userInfo", user);
                 startActivity(intent); // 옷장 추가 인텐트
             }
         });

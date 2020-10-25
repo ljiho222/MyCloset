@@ -20,21 +20,30 @@ public class Closet extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseStorage storage;
     private LinearLayout linearLayout;
-
+    private int cls_style;
     private TextView cls_name;
     private Button camera;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_closet);
 
+
         cls_name=(TextView)findViewById(R.id.cls_name);//사용자가 입력한 옷장 이름
         camera=(Button)findViewById(R.id.camera);//옷 입력을 위함.
+
+        cls_name.setText(getIntent().getStringExtra("cls_name"));
+        cls_style = getIntent().getIntExtra("cls_style", cls_style);
+        user = (User)getIntent().getSerializableExtra("userInfo");
 
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Closet.this, Add_New.class);
+                intent.putExtra("userInfo", user);
+                intent.putExtra("cls_style", cls_style);
+                intent.putExtra("cls_name", cls_name.toString());
                 startActivity(intent);
             }
         });

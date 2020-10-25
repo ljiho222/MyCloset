@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="cls1">
+        <item>행거1</item>
+        <item>행거2</item>
+        <item>서랍1</item>
+    </string-array>
+    <string-array name="cls2">
+        <item>행거1</item>
+        <item>서랍1</item>
+    </string-array>
+    <string-array name="cls3">
+        <item>행거1</item>
+        <item>서랍1</item>
+        <item>서랍2</item>
+        <item>서랍3</item>
+        <item>서랍4</item>
+    </string-array>
+    <string-array name="cls4">
+        <item>서랍1</item>
+        <item>서랍2</item>
+        <item>서랍3</item>
+        <item>서랍4</item>
+    </string-array>
+    <string-array name="cls5">
+        <item>행거1</item>
+        <item>행거2</item>
+    </string-array>
+
     <string-array name="color">
         <item>검정</item>
         <item>흰색</item>

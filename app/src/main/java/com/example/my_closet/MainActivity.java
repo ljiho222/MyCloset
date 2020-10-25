@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.TabHost;
 
 public class MainActivity extends TabActivity {
+
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -13,8 +15,10 @@ public class MainActivity extends TabActivity {
 
         TabHost tabHost = getTabHost();
 
+        user = (User)getIntent().getSerializableExtra("userInfo");
+
         //첫번째 탭
-       tabHost.addTab(tabHost.newTabSpec("Closet").setIndicator("옷장").setContent(new Intent(this,ClosetMain.class)));
+       tabHost.addTab(tabHost.newTabSpec("Closet").setIndicator("옷장").setContent(new Intent(this,ClosetMain.class).putExtra("userInfo", user)));
 
         //두번째 탭
         tabHost.addTab(tabHost.newTabSpec("Style").setIndicator("코디").setContent(new Intent(this,Style.class)));
