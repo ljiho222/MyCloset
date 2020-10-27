@@ -15,7 +15,7 @@ public class MainActivity extends TabActivity {
 
         TabHost tabHost = getTabHost();
 
-        user = (User)getIntent().getSerializableExtra("userInfo");
+        user = (User)this.getIntent().getSerializableExtra("userInfo");
 
         //첫번째 탭
        tabHost.addTab(tabHost.newTabSpec("Closet").setIndicator("옷장").setContent(new Intent(this,ClosetMain.class).putExtra("userInfo", user)));
