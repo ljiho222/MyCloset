@@ -135,6 +135,7 @@ public class Add_New extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, final int i, long l) {
                 if(adspin2.getItem(i).equals("아우터")){
+                    position2=i;
                     spin3.setVisibility(View.VISIBLE);
                     type.setVisibility(View.VISIBLE);
                     adspin3=ArrayAdapter.createFromResource(Add_New.this,R.array.outer_type,android.R.layout.simple_spinner_dropdown_item);
@@ -152,6 +153,7 @@ public class Add_New extends AppCompatActivity {
                     });//아우터의 세부 종류 스피너
                 }
                 else if(adspin2.getItem(i).equals("상의")){
+                    position2=i;
                     spin3.setVisibility(View.VISIBLE);
                     type.setVisibility(View.VISIBLE);
                     adspin3=ArrayAdapter.createFromResource(Add_New.this,R.array.top_type,android.R.layout.simple_spinner_dropdown_item);
@@ -169,6 +171,7 @@ public class Add_New extends AppCompatActivity {
                     });
                 }
                 else if(adspin2.getItem(i).equals("하의")){
+                    position2=i;
                     spin3.setVisibility(View.VISIBLE);
                     type.setVisibility(View.VISIBLE);
                     adspin3=ArrayAdapter.createFromResource(Add_New.this,R.array.bottom_type,android.R.layout.simple_spinner_dropdown_item);
@@ -188,6 +191,7 @@ public class Add_New extends AppCompatActivity {
                 }
                //원피스,기타 선택시 스피너3(종류)에 아예 안뜨도록 구현하는 거는 나중에,,
                 else{
+                    position2=i;
                     spin3.setVisibility(View.GONE);
                     type.setVisibility(View.GONE);
                     position3=10;
@@ -209,7 +213,9 @@ public class Add_New extends AppCompatActivity {
         plus_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clothes = new Clothes(adspin1.getItem(position1).toString(), adspin2.getItem(position2).toString(), adspin3.getItem(position3).toString(), adspin4.getItem(position4).toString(), "");
+                clothes = new Clothes(adspin1.getItem(position1).toString(), adspin2.getItem(position2).toString(), "", adspin4.getItem(position4).toString(), "");
+                if(position3!=10)clothes.setType2(adspin3.getItem(position3).toString());
+                else clothes.setType2("널");
                 if(selectImage != null){
                     //업로드 과정
                     final StorageReference uploadRef =  storageReference.child("image"+selectImage.getLastPathSegment()+System.currentTimeMillis());
@@ -236,7 +242,7 @@ public class Add_New extends AppCompatActivity {
                                         clothes.setUrl(img_download.toString());
                                         String key = databaseReference.push().getKey();
                                         Log.d("log",user.getUserID()+" : "+ cls_name);
-                                        databaseReference.child("Closets").child(user.getUserName()).child(cls_name).child(key).setValue(clothes);
+                                        databaseReference.child("Closets").child(user.getUserName()).child(cls_name).child("Clothes").child(key).setValue(clothes);
                                         finish();
                                     }
                                 });

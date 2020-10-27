@@ -27,6 +27,37 @@
         <item>행거2</item>
     </string-array>
 
+    <string-array name="cls_1">
+        <item>전체</item>
+        <item>행거1</item>
+        <item>행거2</item>
+        <item>서랍1</item>
+    </string-array>
+    <string-array name="cls_2">
+        <item>전체</item>
+        <item>행거1</item>
+        <item>서랍1</item>
+    </string-array>
+    <string-array name="cls_3">
+        <item>전체</item>
+        <item>행거1</item>
+        <item>서랍1</item>
+        <item>서랍2</item>
+        <item>서랍3</item>
+        <item>서랍4</item>
+    </string-array>
+    <string-array name="cls_4">
+        <item>전체</item>
+        <item>서랍1</item>
+        <item>서랍2</item>
+        <item>서랍3</item>
+        <item>서랍4</item>
+    </string-array>
+    <string-array name="cls_5">
+        <item>전체</item>
+        <item>행거1</item>
+        <item>행거2</item>
+    </string-array>
     <string-array name="color">
         <item>검정</item>
         <item>흰색</item>
@@ -42,7 +73,31 @@
         <item>빨강</item>
         <item>분홍</item>
     </string-array>
+    <string-array name="new_color">
+        <item>전체</item>
+        <item>검정</item>
+        <item>흰색</item>
+        <item>회색</item>
+        <item>베이지</item>
+        <item>갈색</item>
+        <item>네이비</item>
+        <item>파랑</item>
+        <item>보라</item>
+        <item>초록</item>
+        <item>노랑</item>
+        <item>주황</item>
+        <item>빨강</item>
+        <item>분홍</item>
+    </string-array>
     <string-array name="type">
+        <item>아우터</item>
+        <item>상의</item>
+        <item>하의</item>
+        <item>원피스</item>
+        <item>기타</item>
+    </string-array>
+    <string-array name="new_type">
+        <item>전체</item>
         <item>아우터</item>
         <item>상의</item>
         <item>하의</item>
