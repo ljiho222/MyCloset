@@ -2,18 +2,22 @@ package com.example.my_closet;
 
 import android.graphics.drawable.Drawable;
 
+import java.io.Serializable;
+
 public class Clothes {
     private String color;
     private String type1;
     private String type2;
-    private Drawable url;
+    private String style;
+    private String url;
 
     public Clothes(){}
 
-    public Clothes(String color, String type1, String type2, Drawable url){
+    public Clothes(String color, String type1, String type2, String style, String url){
         this.color = color;
         this.type1 = type1;
         this.type2 = type2;
+        this.style = style;
         this.url = url;
     }
 
@@ -41,11 +45,19 @@ public class Clothes {
         this.type2 = type2;
     }
 
-    public Drawable getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public void setUrl(Drawable url) {
+    public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
     }
 }

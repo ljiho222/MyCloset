@@ -2,6 +2,7 @@ package com.example.my_closet;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -34,6 +35,7 @@ public class Closet extends AppCompatActivity {
         camera=(Button)findViewById(R.id.camera);//옷 입력을 위함.
 
         cls_name.setText(getIntent().getStringExtra("cls_name"));
+
         cls_style = getIntent().getIntExtra("cls_style", cls_style);
         user = (User)getIntent().getSerializableExtra("userInfo");
 
@@ -43,7 +45,7 @@ public class Closet extends AppCompatActivity {
                 Intent intent = new Intent(Closet.this, Add_New.class);
                 intent.putExtra("userInfo", user);
                 intent.putExtra("cls_style", cls_style);
-                intent.putExtra("cls_name", cls_name.toString());
+                intent.putExtra("cls_name", cls_name.getText().toString());
                 startActivity(intent);
             }
         });

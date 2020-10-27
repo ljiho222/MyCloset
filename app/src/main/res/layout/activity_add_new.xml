@@ -9,7 +9,7 @@
         android:text="옷 추가하기"
         android:layout_gravity="center"/>
     <ImageButton
-        android:id="@+id/plus_image"
+        android:id="@+id/imgbtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/no_image"
@@ -66,14 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="설명"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="기타 내용 설명"/>
+
     <Button
         android:id="@+id/plus_btn"
         android:layout_width="match_parent"

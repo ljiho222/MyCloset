@@ -2,6 +2,7 @@ package com.example.my_closet;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.Button;
@@ -38,9 +39,10 @@ public class ClosetMain extends AppCompatActivity {
         setContentView(R.layout.activity_closetmain);
 
         viewPager=(ViewPager)findViewById(R.id.view);
+        user = (User)getIntent().getSerializableExtra("userInfo");
         adapter = new ViewPagerAdapter(this, Newclosets, user);
         viewPager.setAdapter(adapter);
-        user = (User)getIntent().getSerializableExtra("userInfo");
+
 
         databaseReference.child("Closets").child(user.getUserName()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
