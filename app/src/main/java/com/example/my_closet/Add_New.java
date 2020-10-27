@@ -1,7 +1,9 @@
 package com.example.my_closet;
 
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,11 +12,21 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.DataSnapshot;
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.InputStream;
 
 public class Add_New extends AppCompatActivity {
     ArrayAdapter <CharSequence> adspin1,adspin2,adspin3,adspin4;//어댑터 선언
@@ -24,8 +36,14 @@ public class Add_New extends AppCompatActivity {
     private TextView type;
     private int cls_style;
     private String cls_name;
+    private String filePath;
+    private InputStream in;
+    private Uri selectImage;
+    private Uri img_download;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
+    Clothes clothes;
+    private StorageReference storageReference = FirebaseStorage.getInstance().getReference("Image");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,10 +56,11 @@ public class Add_New extends AppCompatActivity {
 
         type = (TextView)findViewById(R.id.type);
         plus_btn = findViewById(R.id.plus_btn);
+        imgbtn = findViewById(R.id.plus_image);
 
         user = (User)getIntent().getSerializableExtra("userInfo");
-        cls_style = getIntent().getIntExtra("cls_style", cls_style);
-        cls_name = getIntent().getStringExtra("cls_name");
+        cls_style = this.getIntent().getIntExtra("cls_style", cls_style);
+        cls_name = this.getIntent().getStringExtra("cls_name");
 
 
         //색상 스피너-독립적으로 작용
@@ -108,14 +127,59 @@ public class Add_New extends AppCompatActivity {
                 plus_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Clothes clothes = new Clothes(adspin1.getItem(i).toString(), adspin2.getItem(i).toString(), adspin3.getItem(i).toString(), getResources().getDrawable(R.drawable.closet_illust1));
-                        //databaseReference.child("Closets").child(user.getUserName()).child(cls_name).push().setValue(clothes);
-                        finish();
+                        clothes = new Clothes(adspin1.getItem(i).toString(), adspin2.getItem(i).toString(), adspin3.getItem(i).toString(), "");
+                        Log.d("log",selectImage.toString());
+                        if(selectImage != null){
+                            //업로드 과정
+                        final StorageReference uploadRef =  storageReference.child("image"+selectImage.getLastPathSegment()+System.currentTimeMillis());
+                            final UploadTask uploadTask =uploadRef.putFile(selectImage);
+                            Task<Task<Uri>> uriTask = uploadTask.continueWith(new Continuation<UploadTask.TaskSnapshot,Task<Uri>>() {
+                                @Override
+                                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                                    if(!task.isSuccessful()){
+                                        throw task.getException();
+                                    }
+
+                                    Log.d("tag","진입성공");
+                                    return uploadRef.getDownloadUrl();
+                                }
+                            }).addOnCompleteListener(new OnCompleteListener<Task<Uri>>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Task<Uri>> task) {
+                                    if(task.isSuccessful()){
+                                        //자료형 선언 두번 해서 getResult() 두번... ㅠㅠ
+                                       task.getResult().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Uri> task) {
+                                                img_download = task.getResult();
+                                                clothes.setUrl(img_download.toString());
+                                                String key = databaseReference.push().getKey();
+                                                Log.d("log",user.getUserID()+" : "+ cls_name);
+                                                Log.d("log",adspin1.getItem(i).toString());
+                                                databaseReference.child("Closets").child(user.getUserName()).child(cls_name).child(key).setValue(clothes);
+                                                finish();
+                                            }
+                                        });
+
+
+                                    }
+                                }
+                            });
+
+
+                        }
+
+
                     }
                 });
 
 
             }
+
+
+
+
+
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -123,8 +187,36 @@ public class Add_New extends AppCompatActivity {
             }
         });
 
+        imgbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(intent,1);
+            }
+        });
 
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==1){
+            if(resultCode == RESULT_OK){
+                selectImage = data.getData();
+                Glide.with(this).load(selectImage).into(imgbtn);
+
+                try{
+                    InputStream in = getContentResolver().openInputStream(data.getData());
+
+
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }
 
     }
 }

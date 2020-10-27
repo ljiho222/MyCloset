@@ -38,11 +38,10 @@ public class ClosetMain extends AppCompatActivity {
         setContentView(R.layout.activity_closetmain);
 
         viewPager=(ViewPager)findViewById(R.id.view);
+        user = (User)this.getIntent().getSerializableExtra("userInfo");
         adapter = new ViewPagerAdapter(this, Newclosets, user);
         viewPager.setAdapter(adapter);
-        user = (User)getIntent().getSerializableExtra("userInfo");
-
-        databaseReference.child("Closets").child(user.getUserName()).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("Closets").child(user.getUserName()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Newclosets.clear();
