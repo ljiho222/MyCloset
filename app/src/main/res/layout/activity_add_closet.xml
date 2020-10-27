@@ -14,12 +14,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-            <RadioButton
-                android:id="@+id/cls1"
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:background="@drawable/closet_illust1"
-                android:layout_weight="1"/>
+        <RadioButton
+            android:id="@+id/cls1"
+            android:layout_width="wrap_content"
+            android:layout_height="102dp"
+            android:layout_weight="1"
+            android:background="@drawable/closet_illust1" />
             <RadioButton
                 android:id="@+id/cls2"
                 android:layout_width="wrap_content"

@@ -78,6 +78,7 @@ public class ClosetMain extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ClosetMain.this, Search.class);
+                intent.putExtra("userInfo", user);
                 startActivity(intent); // 옷 검색
             }
         });

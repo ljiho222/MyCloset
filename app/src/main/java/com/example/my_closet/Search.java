@@ -51,6 +51,7 @@ public class Search extends AppCompatActivity {
         recyclerview.setHasFixedSize(true);
         adapter = new SearchAdapter(this, arrayList);
         recyclerview.setAdapter(adapter);
+        user=(User)getIntent().getSerializableExtra("userInfo");
 
         //색상 스피너
         adspin1= ArrayAdapter.createFromResource(this,R.array.color,android.R.layout.simple_spinner_dropdown_item);
@@ -71,7 +72,7 @@ public class Search extends AppCompatActivity {
                 color = spin1.getSelectedItem().toString();
                 type = spin2.getSelectedItem().toString();
 
-                databaseReference.child("Closets").child("jiho").addListenerForSingleValueEvent(new ValueEventListener() {
+                databaseReference.child("Closets").child(user.getUserName()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
