@@ -99,6 +99,6 @@
         android:background="@drawable/round_btn"
         android:textColor="@color/colorBackground"
         android:fontFamily="@font/wemakepricebold"
-        android:text="ADD"/>
+        android:text="추가"/>
 
 </LinearLayout>

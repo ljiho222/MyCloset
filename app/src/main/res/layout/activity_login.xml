@@ -26,7 +26,7 @@
         android:textStyle="bold"
         android:textColor="@color/colorText"
         android:fontFamily="@font/wemakepricebold"
-        android:hint="ID" />
+        android:hint="아이디" />
 
     <EditText
         android:id="@+id/pw"
@@ -37,7 +37,7 @@
         android:textStyle="bold"
         android:textColor="@color/colorText"
         android:fontFamily="@font/wemakepricebold"
-        android:hint="PASSWORD"
+        android:hint="비밀번호"
         />
 
     <EditText
@@ -48,13 +48,13 @@
         android:inputType="textPersonName"
         android:fontFamily="@font/wemakepricebold"
         android:textColor="@color/colorText"
-        android:hint="NICKNAME" />
+        android:hint="닉네임" />
 
     <Button
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="로그인"
         android:background="@drawable/round_btn"
         android:fontFamily="@font/wemakepricebold"
         android:textColor="@color/colorBackground"/>
