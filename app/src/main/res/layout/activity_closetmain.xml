@@ -46,23 +46,25 @@
 
 
 
-        <ImageButton
+        <Button
             android:id="@+id/btn_add"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_baseline_add_box_24"
-            android:layout_marginRight="96dp"
-            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="옷장 추가"
+            android:fontFamily="@font/wemakepricesemibold"
+            android:layout_marginRight="72dp"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/colorBackground"
             />
 
-        <ImageButton
+        <Button
             android:id="@+id/btn_search"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/search_btn"
-            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="옷 검색"
+            android:fontFamily="@font/wemakepricesemibold"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/colorBackground"
             />
 
 

@@ -25,8 +25,8 @@ public class ClosetMain extends AppCompatActivity {
 
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
-    private ImageButton btn_add;
-    private ImageButton btn_search;
+    private Button btn_add;
+    private Button btn_search;
     private ImageButton btn_closet;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
