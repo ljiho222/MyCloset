@@ -7,8 +7,15 @@
     android:orientation="vertical"
     tools:context=".LoginActivity"
     android:gravity="center_vertical"
-    android:layout_marginLeft="50dp"
-    android:layout_marginRight="50dp">
+    android:background="@color/colorBackground"
+    >
+<LinearLayout
+    android:paddingRight="50dp"
+    android:paddingLeft="50dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
 
     <EditText
         android:id="@+id/id"
@@ -24,7 +31,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Password" />
+        android:hint="PASSWORD" />
 
     <EditText
         android:id="@+id/nickname"
@@ -32,12 +39,15 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Nickname" />
+        android:hint="NICKNAME" />
 
     <Button
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login" />
+
+
+</LinearLayout>
 
 </LinearLayout>

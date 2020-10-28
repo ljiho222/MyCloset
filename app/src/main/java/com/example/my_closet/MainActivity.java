@@ -18,10 +18,10 @@ public class MainActivity extends TabActivity {
         user = (User)this.getIntent().getSerializableExtra("userInfo");
 
         //첫번째 탭
-       tabHost.addTab(tabHost.newTabSpec("Closet").setIndicator("옷장").setContent(new Intent(this,ClosetMain.class).putExtra("userInfo", user)));
+       tabHost.addTab(tabHost.newTabSpec("Closet").setIndicator("CLOSET").setContent(new Intent(this,ClosetMain.class).putExtra("userInfo", user)));
 
         //두번째 탭
-        tabHost.addTab(tabHost.newTabSpec("Style").setIndicator("코디").setContent(new Intent(this,Style.class)));
+        tabHost.addTab(tabHost.newTabSpec("Style").setIndicator("STYLING").setContent(new Intent(this,Style.class)));
 
 
     }

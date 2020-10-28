@@ -2,18 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+    >
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="옷 추가하기"
         android:layout_gravity="center"/>
+
     <ImageButton
         android:id="@+id/imgbtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/no_image"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitXY"
+        android:src="@drawable/no_image" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -5,57 +5,71 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Search">
+    tools:context=".Search"
+    android:gravity="center"
+    android:background="@color/colorBackground"
+    >
 
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <RadioGroup
-        android:id="@+id/radio_cls"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <RadioButton
-            android:id="@+id/cls1"
+        <RadioGroup
+            android:orientation="horizontal"
+            android:id="@+id/radio_cls"
             android:layout_width="wrap_content"
-            android:layout_height="102dp"
-            android:layout_weight="1"
-            android:background="@drawable/closet_illust1" />
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            >
+
+
+            <RadioButton
+                android:id="@+id/cls1"
+                android:layout_width="220dp"
+                android:layout_height="220dp"
+                android:background="@drawable/closet_illust1" />
+
             <RadioButton
                 android:id="@+id/cls2"
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:background="@drawable/closet_illust2"
-                android:layout_weight="1"/>
+                android:layout_width="220dp"
+                android:layout_height="220dp"
+                android:background="@drawable/closet_illust2" />
+
             <RadioButton
                 android:id="@+id/cls3"
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:background="@drawable/closet_illust3"
-                android:layout_weight="1"/>
+                android:layout_width="220dp"
+                android:layout_height="220dp"
+                android:background="@drawable/closet_illust3" />
+
             <RadioButton
                 android:id="@+id/cls4"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="220dp"
+                android:layout_height="220dp"
                 android:background="@drawable/closet_illust4"
-                android:layout_marginRight="50dp"/>
+                />
             <RadioButton
                 android:id="@+id/cls5"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:background="@drawable/closet_illust5"/>
+                android:layout_width="220dp"
+                android:layout_height="220dp"
+                android:background="@drawable/closet_illust5"
+                />
+        </RadioGroup>
 
-    </RadioGroup>
+    </HorizontalScrollView>
+
 
 
 
     <EditText
         android:id="@+id/closet_name"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="이름"/>
     <Button
         android:id="@+id/addcloset"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
         android:layout_height="wrap_content"
-        android:text="추가하기"/>
+        android:text="추가하기"
+        android:layout_marginTop="15dp"/>
 </LinearLayout>
