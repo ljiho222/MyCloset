@@ -23,6 +23,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textStyle="bold"
+        android:textColor="@color/colorText"
+        android:fontFamily="@font/wemakepricebold"
         android:hint="ID" />
 
     <EditText
@@ -31,7 +34,11 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="PASSWORD" />
+        android:textStyle="bold"
+        android:textColor="@color/colorText"
+        android:fontFamily="@font/wemakepricebold"
+        android:hint="PASSWORD"
+        />
 
     <EditText
         android:id="@+id/nickname"
@@ -39,13 +46,18 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
+        android:fontFamily="@font/wemakepricebold"
+        android:textColor="@color/colorText"
         android:hint="NICKNAME" />
 
     <Button
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login" />
+        android:text="Login"
+        android:background="@drawable/round_btn"
+        android:fontFamily="@font/wemakepricebold"
+        android:textColor="@color/colorBackground"/>
 
 
 </LinearLayout>

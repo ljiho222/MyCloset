@@ -4,11 +4,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorBackground"
+    android:gravity="center"
     >
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="옷 추가하기"
+        android:text="ADD CLOTHES"
+        android:textSize="18dp"
+        android:textColor="@color/colorText"
         android:layout_gravity="center"/>
 
     <ImageButton
@@ -25,7 +28,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="위치"/>
+            android:text="위치"
+            android:textColor="@color/colorHintText"/>
         <Spinner
             android:id="@+id/location_spinner"
             android:layout_width="match_parent"
@@ -39,11 +43,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="색상"/>
+            android:text="색상"
+            android:textColor="@color/colorHintText"/>
         <Spinner
             android:id="@+id/color_spinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            />
 
     </LinearLayout>
     <LinearLayout
@@ -53,7 +59,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="카테고리"/>
+            android:text="카테고리"
+            android:textColor="@color/colorHintText"/>
         <Spinner
             android:id="@+id/type_spinner"
             android:layout_weight="1"
@@ -63,7 +70,8 @@
             android:id="@+id/type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="종류"/>
+            android:text="종류"
+            android:textColor="@color/colorHintText"/>
         <Spinner
             android:id="@+id/sub_spinner"
             android:layout_weight="1"
@@ -73,8 +81,10 @@
 
     <Button
         android:id="@+id/plus_btn"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="추가하기"/>
+        android:background="@drawable/round_btn"
+        android:textColor="@color/colorBackground"
+        android:text="ADD"/>
 
 </LinearLayout>

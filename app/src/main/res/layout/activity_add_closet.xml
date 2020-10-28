@@ -10,6 +10,18 @@
     android:background="@color/colorBackground"
     >
 
+
+    <TextView
+        android:id="@+id/select_closet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:text="SELECT THE TYPE"
+        android:fontFamily="@font/wemakepricesemibold"
+        android:gravity="center"
+        android:textColor="@color/colorText"
+        android:layout_marginBottom="10dp"/>
+
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -61,15 +73,22 @@
 
 
     <EditText
+        android:layout_marginTop="15dp"
         android:id="@+id/closet_name"
-        android:layout_width="wrap_content"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:hint="이름"/>
+        android:hint="NAME"
+        android:fontFamily="@font/wemakepriceregular"
+        android:textColor="@color/colorText"
+        android:textColorHint="@color/colorHintText"/>
     <Button
         android:id="@+id/addcloset"
         android:layout_width="wrap_content"
         android:layout_gravity="center"
         android:layout_height="wrap_content"
-        android:text="추가하기"
+        android:background="@color/colorButton"
+        android:textColor="@color/colorBackground"
+        android:fontFamily="@font/wemakepriceregular"
+        android:text="ADD"
         android:layout_marginTop="15dp"/>
 </LinearLayout>

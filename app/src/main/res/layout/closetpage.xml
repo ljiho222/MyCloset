@@ -11,9 +11,9 @@
         android:id="@+id/cls_name"
         android:layout_gravity="center"
         android:textSize="20dp"
-        android:textStyle="bold"
-        android:paddingTop="2dp"
-        android:paddingBottom="2dp"/>
+        android:fontFamily="@font/wemakepricebold"
+        android:paddingTop="8dp"
+        />
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
