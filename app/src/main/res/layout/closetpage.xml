@@ -12,7 +12,7 @@
         android:layout_gravity="center"
         android:textSize="20dp"
         android:fontFamily="@font/wemakepricebold"
-        android:paddingTop="8dp"
+        android:paddingTop="12dp"
         />
     <ImageView
         android:id="@+id/imageView"

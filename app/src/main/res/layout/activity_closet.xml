@@ -12,6 +12,9 @@
             android:id="@+id/cls_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/wemakepricesemibold"
+            android:textSize="18dp"
+            android:layout_marginLeft="10dp"
             android:text="옷장이름"/>
         <View
             android:layout_width="0dp"

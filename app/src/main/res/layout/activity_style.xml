@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textSize="24dp"
+            android:fontFamily="@font/wemakepricebold"
             android:text="DAEGU, KR"/>
 
         <LinearLayout
@@ -48,6 +49,7 @@
                     android:textSize="40dp"
                     android:layout_marginTop="10dp"
                     android:layout_gravity="center"
+                    android:fontFamily="@font/wemakepriceregular"
                     android:text="0°C"/>
 
                 <LinearLayout
@@ -62,6 +64,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="18dp"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/wemakepricebold"
                         android:text="맑음"/>
 
                     <TextView
@@ -69,12 +72,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="30"
+                        android:fontFamily="@font/wemakepricebold"
                         android:textSize="18dp" />
 
                     <TextView
                         android:id="@+id/temp_max"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:fontFamily="@font/wemakepricebold"
                         android:text="30"
                         android:textSize="18dp" />
 
@@ -89,12 +94,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textSize="20dp"
+            android:fontFamily="@font/wemakepricebold"
             android:text="오늘은 날씨가 좋습니다~"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textSize="20dp"
+            android:fontFamily="@font/wemakepricebold"
             android:text="오늘의 추천 옷차림"/>
 
         <ImageView

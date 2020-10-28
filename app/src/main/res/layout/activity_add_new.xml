@@ -9,26 +9,32 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ADD CLOTHES"
+        android:text="옷 추가하기"
         android:textSize="18dp"
         android:textColor="@color/colorText"
+        android:fontFamily="@font/wemakepricebold"
         android:layout_gravity="center"/>
 
     <ImageButton
         android:id="@+id/imgbtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:scaleType="fitXY"
         android:src="@drawable/no_image" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="위치"
+            android:fontFamily="@font/wemakepricesemibold"
             android:textColor="@color/colorHintText"/>
         <Spinner
             android:id="@+id/location_spinner"
@@ -39,11 +45,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="색상"
+            android:fontFamily="@font/wemakepricesemibold"
             android:textColor="@color/colorHintText"/>
         <Spinner
             android:id="@+id/color_spinner"
@@ -55,11 +64,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="카테고리"
+            android:fontFamily="@font/wemakepricesemibold"
             android:textColor="@color/colorHintText"/>
         <Spinner
             android:id="@+id/type_spinner"
@@ -71,6 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="종류"
+            android:fontFamily="@font/wemakepricesemibold"
             android:textColor="@color/colorHintText"/>
         <Spinner
             android:id="@+id/sub_spinner"
@@ -85,6 +98,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/round_btn"
         android:textColor="@color/colorBackground"
+        android:fontFamily="@font/wemakepricebold"
         android:text="ADD"/>
 
 </LinearLayout>

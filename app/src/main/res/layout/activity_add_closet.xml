@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="24dp"
-        android:text="SELECT THE TYPE"
+        android:text="옷장 형태 선택"
         android:fontFamily="@font/wemakepricesemibold"
         android:gravity="center"
         android:textColor="@color/colorText"

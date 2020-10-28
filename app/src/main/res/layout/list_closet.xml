@@ -35,12 +35,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="이름"
+                    android:textColor="@color/colorText"
+                    android:fontFamily="@font/wemakepricesemibold"
                     android:layout_margin="5dp"/>
                 <TextView
                     android:id="@+id/c_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:fontFamily="@font/wemakepricesemibold"
+                    android:textColor="@color/colorHintText"
                     android:hint="옷장이름"/>
 
             </LinearLayout>
@@ -52,12 +56,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="위치"
+                    android:textColor="@color/colorText"
+                    android:fontFamily="@font/wemakepricesemibold"
                     android:layout_margin="5dp"/>
                 <TextView
                     android:id="@+id/c_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:fontFamily="@font/wemakepricesemibold"
+                    android:textColor="@color/colorHintText"
                     android:hint="옷위치"/>
 
             </LinearLayout>
