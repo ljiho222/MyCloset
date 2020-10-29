@@ -1,5 +1,6 @@
 package com.example.my_closet;
 
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -10,12 +11,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import static com.androdocs.httprequest.HttpRequest.*;
 
 public class Style extends AppCompatActivity {
     String API = "7363e45fdc7cb5ea14d3049b8175c7d0";
-    TextView addressTxt, status_mainTxt,tempTxt,temp_minTxt, temp_maxTxt, plusTxt;
-    ImageView img;
+    TextView addressTxt, status_mainTxt,tempTxt, plusTxt;
+    ImageView img,simg1,simg2,simg3;
+    private ArrayList<Drawable> styling=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +30,12 @@ public class Style extends AppCompatActivity {
         addressTxt = findViewById(R.id.address);//현재 위치
         status_mainTxt=findViewById(R.id.status_main);//맑음, 구름 표시
         tempTxt = findViewById(R.id.temp);//현재 온도
-        temp_maxTxt=findViewById(R.id.temp_max);//최고 기온
-        temp_minTxt=findViewById(R.id.temp_min);//최저 기온
+
         img = findViewById(R.id.w_image);//날씨 아이콘
+        simg1=findViewById(R.id.simg1);
+        simg2=findViewById(R.id.simg2);
+        simg3=findViewById(R.id.simg3);
+
         plusTxt=findViewById(R.id.plus_txt); //오늘 날씨에 대한 코멘트
 
 //AsyncTask는 execute()명령어를 통해 실행함.
@@ -68,8 +75,7 @@ public class Style extends AppCompatActivity {
 //main object에 접근
                 Integer temp = main.getInt("temp");
                 Integer temper = main.getInt("temp");
-                Integer tempMin = main.getInt("temp_min");
-                Integer tempMax = main.getInt("temp_max");
+
 
                 String weatherMain = weather.getString("main");
                 String weatherDescription = weather.getString("description");
@@ -120,33 +126,47 @@ public class Style extends AppCompatActivity {
 
 //기온에 따라 옷차림 추천
                 if(temp>=28){
+                    simg1.setImageResource(R.drawable.covernat_shirt);
+                    simg2.setImageResource(R.drawable.beige_short);
+                    simg3.setImageResource(R.drawable.slide_black);
 
                 }
                 else if(temp<28 && temp>=20){
-
+                    simg1.setImageResource(R.drawable.stripe_long_sleeve);
+                    simg2.setImageResource(R.drawable.cotton_pant);
+                    simg3.setImageResource(R.drawable.sneakers);
                 }
                 else if(temp<20 && temp>=17){
-
+                    simg1.setImageResource(R.drawable.black_cardigan);
+                    simg2.setImageResource(R.drawable.white_shirt);
+                    simg3.setImageResource(R.drawable.denim_pant);
                 }
                 else if(temp<17 && temp>=12){
-
+                    simg1.setImageResource(R.drawable.trench_coat);
+                    simg2.setImageResource(R.drawable.cream_knit);
+                    simg3.setImageResource(R.drawable.black_slacks);
                 }
                 else if(temp<12 && temp>=9){
-
+                    simg1.setImageResource(R.drawable.rider_jacket);
+                    simg2.setImageResource(R.drawable.cream_sweatshirt);
+                    simg3.setImageResource(R.drawable.black_denim);
                 }
                 else if(temp<9 && temp>=5){
-
+                    simg1.setImageResource(R.drawable.hoodie_zipup);
+                    simg2.setImageResource(R.drawable.stripe_shirt);
+                    simg3.setImageResource(R.drawable.training_pant);
                 }
                 else if(temp<5){
-
+                    simg1.setImageResource(R.drawable.puffa_padding);
+                    simg2.setImageResource(R.drawable.navy_sweatshirt);
+                    simg3.setImageResource(R.drawable.wide_denim);
                 }
 
                 /* Populating extracted data into our views */
                 addressTxt.setText(address);
                 status_mainTxt.setText(weatherMain);
-                tempTxt.setText(temper+"°C");
-                temp_minTxt.setText("("+tempMin+"°C");
-                temp_maxTxt.setText("/"+tempMax+"°C)");
+                tempTxt.setText(temper+"도");
+
 
 
                 /* Views populated, Hiding the loader, Showing the main design */

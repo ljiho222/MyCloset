@@ -1,6 +1,7 @@
 package com.example.my_closet;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -59,6 +60,9 @@ public class Add_New extends AppCompatActivity {
         final Spinner spin2 = (Spinner)findViewById(R.id.type_spinner);//카테고리 선택 스피너
         final Spinner spin3 = (Spinner)findViewById(R.id.sub_spinner);//옷 종류 선택 스피너
         final Spinner spin4 = (Spinner)findViewById(R.id.location_spinner);//위치 선택 스피너
+
+
+        //(spin1).setTypeface(externalFont);
 
         type = (TextView)findViewById(R.id.type);
         plus_btn = findViewById(R.id.plus_btn);
