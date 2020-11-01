@@ -96,7 +96,7 @@ public class Closet extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                if(adspin.getItem(i).equals("전체")){
-                   databaseReference.child("Closets").child(user.getUserName()).child(cls_name.getText().toString()).child("Clothes").addListenerForSingleValueEvent(new ValueEventListener() {
+                   databaseReference.child("Closets").child(user.getUserName()).child(cls_name.getText().toString()).child("Clothes").addValueEventListener(new ValueEventListener() {
                        @Override
                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                            Clothess.clear();
@@ -114,7 +114,7 @@ public class Closet extends AppCompatActivity {
                    });
                }
                else if(adspin.getItem(i).equals("행거1")) {
-                   databaseReference.child("Closets").child(user.getUserName()).child(cls_name.getText().toString()).child("Clothes").addListenerForSingleValueEvent(new ValueEventListener() {
+                   databaseReference.child("Closets").child(user.getUserName()).child(cls_name.getText().toString()).child("Clothes").addValueEventListener(new ValueEventListener() {
                        @Override
                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                            Clothess.clear();
@@ -134,7 +134,7 @@ public class Closet extends AppCompatActivity {
                    });
                }
                else if(adspin.getItem(i).equals("행거2")) {
-                   databaseReference.child("Closets").child(user.getUserName()).child(cls_name.getText().toString()).child("Clothes").addListenerForSingleValueEvent(new ValueEventListener() {
+                   databaseReference.child("Closets").child(user.getUserName()).child(cls_name.getText().toString()).child("Clothes").addValueEventListener(new ValueEventListener() {
                        @Override
                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                            Clothess.clear();
@@ -153,7 +153,7 @@ public class Closet extends AppCompatActivity {
                    });
                }
                else if(adspin.getItem(i).equals("서랍1")) {
-                   databaseReference.child("Closets").child(user.getUserName()).child(cls_name.getText().toString()).child("Clothes").addListenerForSingleValueEvent(new ValueEventListener() {
+                   databaseReference.child("Closets").child(user.getUserName()).child(cls_name.getText().toString()).child("Clothes").addValueEventListener(new ValueEventListener() {
                        @Override
                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                            Clothess.clear();
@@ -172,7 +172,7 @@ public class Closet extends AppCompatActivity {
                    });
                }
                else if(adspin.getItem(i).equals("서랍2")) {
-                   databaseReference.child("Closets").child(user.getUserName()).child(cls_name.getText().toString()).child("Clothes").addListenerForSingleValueEvent(new ValueEventListener() {
+                   databaseReference.child("Closets").child(user.getUserName()).child(cls_name.getText().toString()).child("Clothes").addValueEventListener(new ValueEventListener() {
                        @Override
                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                            Clothess.clear();
@@ -191,7 +191,7 @@ public class Closet extends AppCompatActivity {
                    });
                }
                else if(adspin.getItem(i).equals("서랍3")) {
-                   databaseReference.child("Closets").child(user.getUserName()).child(cls_name.getText().toString()).child("Clothes").addListenerForSingleValueEvent(new ValueEventListener() {
+                   databaseReference.child("Closets").child(user.getUserName()).child(cls_name.getText().toString()).child("Clothes").addValueEventListener(new ValueEventListener() {
                        @Override
                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                            Clothess.clear();
@@ -210,7 +210,7 @@ public class Closet extends AppCompatActivity {
                    });
                }
                else if(adspin.getItem(i).equals("서랍4")) {
-                   databaseReference.child("Closets").child(user.getUserName()).child(cls_name.getText().toString()).child("Clothes").addListenerForSingleValueEvent(new ValueEventListener() {
+                   databaseReference.child("Closets").child(user.getUserName()).child(cls_name.getText().toString()).child("Clothes").addValueEventListener(new ValueEventListener() {
                        @Override
                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                            Clothess.clear();

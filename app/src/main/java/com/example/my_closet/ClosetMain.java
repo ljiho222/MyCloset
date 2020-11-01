@@ -44,7 +44,7 @@ public class ClosetMain extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
 
-        databaseReference.child("Closets").child(user.getUserName()).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("Closets").child(user.getUserName()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Newclosets.clear();
