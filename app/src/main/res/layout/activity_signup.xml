@@ -6,16 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_vertical"
-    android:background="@color/colorBackground"
-    tools:context=".LoginActivity">
+    tools:context=".SignupActivity">
 
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/smart_logo"
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/wemakepriceregular"
+        android:textSize="40dp"
         android:gravity="center"
-        android:layout_gravity="center_horizontal"
-        />
+        android:text="회원가입"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -49,8 +48,48 @@
         android:textSize="20dp"
         android:hint="비밀번호" />
 
+    <EditText
+        android:id="@+id/editNickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:fontFamily="@font/wemakepriceregular"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:textSize="20dp"
+        android:hint="닉네임" />
+
+    <RadioGroup
+        android:id="@+id/radio_cls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+
+    <RadioButton
+        android:id="@+id/cls1"
+        android:text="남"
+        android:fontFamily="@font/wemakepriceregular"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="80dp"/>
+
+    <RadioButton
+        android:id="@+id/cls2"
+        android:text="여"
+        android:fontFamily="@font/wemakepriceregular"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       />
+    </RadioGroup>
+
     <Button
-        android:id="@+id/btnSignin"
+        android:id="@+id/btnSignup"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:fontFamily="@font/wemakepriceregular"
@@ -58,54 +97,13 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:textSize="20dp"
-        android:text="로그인"
-        android:textColor="#ffffff"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="10dp"/>
-
-    <TextView
-        android:id="@+id/textMessage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/wemakepriceregular"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:gravity="center"
-        android:text="" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="20dp"/>
-
-    <Button
-        android:id="@+id/btnSignup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/wemakepriceregular"
-        android:background="@drawable/round_btn2"
-        android:textColor="@color/colorBackground"
-        android:layout_marginLeft="70dp"
-        android:layout_marginRight="70dp"
         android:text="회원가입" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="10dp"/>
 
-    <Button
-        android:id="@+id/btnFind"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/wemakepriceregular"
-        android:background="@drawable/round_btn2"
-        android:textColor="@color/colorBackground"
-        android:layout_marginLeft="70dp"
-        android:layout_marginRight="70dp"
-        android:text="비밀번호 찾기" />
-
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="100dp"/>
+        android:layout_height="135dp"/>
 </LinearLayout>

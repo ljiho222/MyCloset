@@ -9,8 +9,10 @@
         android:roundIcon="@drawable/smart_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
-        </activity>
+        <activity android:name=".FindPasswordActivity"></activity>
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".Signup" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Add_Closet" />
         <activity android:name=".Style" />
