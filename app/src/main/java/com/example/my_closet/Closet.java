@@ -60,8 +60,10 @@ public class Closet extends AppCompatActivity {
         recyclerview.setHasFixedSize(true);
         layoutManager = new GridLayoutManager(this,3);
         recyclerview.setLayoutManager(layoutManager);
-        adapter = new ClothesAdapter(this, Clothess);
+        adapter = new ClothesAdapter(this, Clothess, user, cls_name.getText().toString());
         recyclerview.setAdapter(adapter);
+
+
 
         camera.setOnClickListener(new View.OnClickListener() {
             @Override

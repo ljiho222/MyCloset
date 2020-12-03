@@ -217,7 +217,7 @@ public class Add_New extends AppCompatActivity {
         plus_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clothes = new Clothes(adspin1.getItem(position1).toString(), adspin2.getItem(position2).toString(), "", adspin4.getItem(position4).toString(), "");
+                clothes = new Clothes(adspin1.getItem(position1).toString(), adspin2.getItem(position2).toString(), "", adspin4.getItem(position4).toString(), "", "");
                 if(position3!=10)clothes.setType2(adspin3.getItem(position3).toString());
                 else clothes.setType2("널");
                 if(selectImage != null){
@@ -245,6 +245,7 @@ public class Add_New extends AppCompatActivity {
                                         img_download = task.getResult();
                                         clothes.setUrl(img_download.toString());
                                         String key = databaseReference.push().getKey();
+                                        clothes.setKey(key);
                                         Log.d("log",user.getUserID()+" : "+ cls_name);
                                         databaseReference.child("Closets").child(user.getUserName()).child(cls_name).child("Clothes").child(key).setValue(clothes);
                                         finish();

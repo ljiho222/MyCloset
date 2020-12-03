@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.firebase.database.DataSnapshot;
@@ -32,6 +33,7 @@ public class ClosetMain extends AppCompatActivity {
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
     private User user;
     private ArrayList<Newcloset> Newclosets = new ArrayList<>();
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,28 +41,29 @@ public class ClosetMain extends AppCompatActivity {
         setContentView(R.layout.activity_closetmain);
 
         viewPager=(ViewPager)findViewById(R.id.view);
-        user = (User)getIntent().getSerializableExtra("userInfo");
-        adapter = new ViewPagerAdapter(this, Newclosets, user);
-        viewPager.setAdapter(adapter);
+
+        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe_layout);
 
 
-        databaseReference.child("Closets").child(user.getUserName()).addValueEventListener(new ValueEventListener() {
+        func();
+
+        swipeRefreshLayout.setColorSchemeResources(
+                android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light
+        );
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Newclosets.clear();
-                for(DataSnapshot snapshot:dataSnapshot.getChildren()){
-                    Newcloset newcloset = snapshot.getValue(Newcloset.class);
-                    Newclosets.add(newcloset);
-                }
-
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
+            public void onRefresh() {
+                func();
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
+
+
+
 
 
 
@@ -80,6 +83,30 @@ public class ClosetMain extends AppCompatActivity {
                 Intent intent = new Intent(ClosetMain.this, Search.class);
                 intent.putExtra("userInfo", user);
                 startActivity(intent); // 옷 검색
+            }
+        });
+    }
+    private void func() {
+
+        user = (User)getIntent().getSerializableExtra("userInfo");
+        adapter = new ViewPagerAdapter(this, Newclosets, user);
+        viewPager.setAdapter(adapter);
+
+        databaseReference.child("Closets").child(user.getUserName()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Newclosets.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Newcloset newcloset = snapshot.getValue(Newcloset.class);
+                    Newclosets.add(newcloset);
+                }
+
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }

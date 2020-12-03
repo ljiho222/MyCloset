@@ -22,17 +22,17 @@
         android:textColor="@color/colorText"
         android:layout_marginBottom="10dp"/>
 
+
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <RadioGroup
-            android:orientation="horizontal"
             android:id="@+id/radio_cls"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            >
+            android:orientation="horizontal"
+            android:padding="10dp">
 
 
             <RadioButton
@@ -57,20 +57,16 @@
                 android:id="@+id/cls4"
                 android:layout_width="220dp"
                 android:layout_height="220dp"
-                android:background="@drawable/closet_illust4"
-                />
+                android:background="@drawable/closet_illust4" />
+
             <RadioButton
                 android:id="@+id/cls5"
                 android:layout_width="220dp"
                 android:layout_height="220dp"
-                android:background="@drawable/closet_illust5"
-                />
+                android:background="@drawable/closet_illust5" />
         </RadioGroup>
 
     </HorizontalScrollView>
-
-
-
 
     <EditText
         android:layout_marginTop="15dp"
