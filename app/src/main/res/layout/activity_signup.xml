@@ -53,7 +53,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPassword"
         android:fontFamily="@font/wemakepriceregular"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
@@ -103,7 +102,5 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="135dp"/>
+
 </LinearLayout>
