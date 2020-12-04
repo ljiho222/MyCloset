@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editId, editPw;
     private TextView textMessage;
     private Button btnSignin, btnSignup, btnFind;
+    private User userinfo;
 
     // Firebase Auth
     private FirebaseAuth mAuth;
@@ -153,7 +154,7 @@ public class LoginActivity extends AppCompatActivity {
         autoLogin.commit();
     }
     //category reset & skip
-    private void updateUIwithEmailCheck(FirebaseUser user){
+    private void updateUIwithEmailCheck(final FirebaseUser user){
         if(user!=null){
             boolean emailVerified=user.isEmailVerified();
             if(emailVerified){
@@ -162,6 +163,11 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        User userInfo = dataSnapshot.getValue(User.class);
+                        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                        intent.putExtra("userInfo", userInfo);
+                        startActivity(intent);
+                        finish();
 
                     }
 

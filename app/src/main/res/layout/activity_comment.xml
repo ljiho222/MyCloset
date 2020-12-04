@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CommentActivity">
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/swipe_layout">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="15dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/LayoutUserID"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/round_btn"
+                                android:paddingLeft="15dp"
+                                android:paddingTop="5dp"
+                                android:paddingRight="15dp"
+                                android:paddingBottom="5dp"
+                                android:fontFamily="@font/wemakepriceregular"
+                                android:text="작성자"
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:id="@+id/textViewUserID"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="10dp"
+                                android:paddingTop="5dp"
+                                android:paddingRight="10dp"
+                                android:paddingBottom="5dp"
+                                android:layout_marginLeft="10dp"
+                                android:textSize="15dp" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/LayoutArticleContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textViewArticleContent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:text=""
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp" />
+
+                            <ImageView
+                                android:id="@+id/artticleimage"
+                                android:layout_width="300dp"
+                                android:layout_height="300dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="1" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/LayoutComment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/LayoutWriteComment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/editTextWriteComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="5"
+                                android:ems="10"
+                                android:hint="댓글을 작성하세요"
+                                android:fontFamily="@font/wemakepriceregular"
+                                android:padding="10dp"
+                                android:text=""
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:layout_width="10dp"
+                                android:layout_height="match_parent" />
+
+                            <Button
+                                android:id="@+id/buttonWriteComment"
+                                android:onClick="onClickComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/round_btn"
+                                android:fontFamily="@font/wemakepriceregular"
+                                android:text="작성" />
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewComment"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</LinearLayout>

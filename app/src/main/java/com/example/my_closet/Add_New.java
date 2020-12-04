@@ -246,7 +246,6 @@ public class Add_New extends AppCompatActivity {
                                         clothes.setUrl(img_download.toString());
                                         String key = databaseReference.push().getKey();
                                         clothes.setKey(key);
-                                        Log.d("log",user.getUserID()+" : "+ cls_name);
                                         databaseReference.child("Closets").child(user.getUserName()).child(cls_name).child("Clothes").child(key).setValue(clothes);
                                         finish();
                                     }

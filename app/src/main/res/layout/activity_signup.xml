@@ -24,13 +24,13 @@
         android:id="@+id/editId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:fontFamily="@font/wemakepriceregular"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:textSize="20dp"
-        android:hint="이메일" />
+        android:ems="10"
+        android:fontFamily="@font/wemakepriceregular"
+        android:hint="이메일"
+        android:inputType="textPersonName"
+        android:textSize="20dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -59,33 +59,10 @@
         android:textSize="20dp"
         android:hint="닉네임" />
 
-    <RadioGroup
-        android:id="@+id/radio_cls"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:padding="20dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
 
-
-    <RadioButton
-        android:id="@+id/cls1"
-        android:text="남"
-        android:fontFamily="@font/wemakepriceregular"
-        android:textSize="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="80dp"/>
-
-    <RadioButton
-        android:id="@+id/cls2"
-        android:text="여"
-        android:fontFamily="@font/wemakepriceregular"
-        android:textSize="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-       />
-    </RadioGroup>
 
     <Button
         android:id="@+id/btnSignup"
@@ -93,6 +70,7 @@
         android:layout_height="60dp"
         android:fontFamily="@font/wemakepriceregular"
         android:background="@drawable/round_btn"
+        android:textColor="@color/colorBackground"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:textSize="20dp"
@@ -101,6 +79,17 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="10dp"/>
+
+    <TextView
+        android:id="@+id/textMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/wemakepriceregular"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:gravity="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="" />
 
 
 </LinearLayout>

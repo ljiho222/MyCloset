@@ -41,7 +41,7 @@ public class Style extends AppCompatActivity {
 //AsyncTask는 execute()명령어를 통해 실행함.
         new weatherTask().execute();
     }
-    class weatherTask extends AsyncTask<String, Void, String> {
+    static class weatherTask extends AsyncTask<String, Void, String> {
         @Override
 //제일 먼저 실행 이미지 로딩작업 등 스레드 작업 이전 수행할 동작 구현
 
