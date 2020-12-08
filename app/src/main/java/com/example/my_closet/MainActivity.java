@@ -24,5 +24,6 @@ public class MainActivity extends TabActivity {
         tabHost.addTab(tabHost.newTabSpec("Style").setIndicator("STYLING").setContent(new Intent(this,Style.class)));
 
 
+
     }
 }

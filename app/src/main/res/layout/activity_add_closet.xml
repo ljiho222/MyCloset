@@ -51,7 +51,8 @@
                 android:id="@+id/cls3"
                 android:layout_width="220dp"
                 android:layout_height="220dp"
-                android:background="@drawable/closet_illust3" />
+                android:background="@drawable/closet_illust3"
+                 />
 
             <RadioButton
                 android:id="@+id/cls4"

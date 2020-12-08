@@ -57,12 +57,13 @@ public class ViewPagerAdapter extends PagerAdapter {
         else if(5==Newclosets.get(position).getStyle()){
             imageView.setImageResource(R.drawable.closet_illust5);
         }
+
+        final View dialogView=inflater.inflate(R.layout.delete_dialog,null);
+
         imageView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-
-
-                AlertDialog.Builder builder=new AlertDialog.Builder(mContext).setTitle("옷장 삭제").setMessage("삭제하시겠습니까?")
+                AlertDialog.Builder builder=new AlertDialog.Builder(mContext).setView(dialogView)
                         .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {

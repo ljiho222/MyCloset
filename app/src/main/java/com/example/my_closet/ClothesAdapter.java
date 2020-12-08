@@ -3,7 +3,6 @@ package com.example.my_closet;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,9 +36,7 @@ public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
-        LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
+        LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.adapterlist, parent, false);
         ClothesAdapter.ViewHolder vh = new ClothesAdapter.ViewHolder(view);
 
@@ -53,18 +50,21 @@ public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ViewHold
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-
             imageView = itemView.findViewById(R.id.imgview);
+
+            LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            final View dialogView=inflater.inflate(R.layout.delete_dialog,null);
+            
             imageView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
                     final int pos = getAdapterPosition() ;
 
-                    AlertDialog.Builder builder=new AlertDialog.Builder(mContext).setTitle("옷 삭제").setMessage("삭제하시겠습니까?")
-                            .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    AlertDialog.Builder builder=new AlertDialog.Builder(mContext).setView(dialogView)
+                            .setPositiveButton("", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    Log.e("123123", String.valueOf(Clothess.get(pos).getKey()));
+                                    //Log.e("123123", String.valueOf(Clothess.get(pos).getKey()));
                                     DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Closets").child(user.getUserName()).child(cls_name).child("Clothes").child(Clothess.get(pos).getKey());
                                     reference.removeValue();
                                     Toast.makeText(mContext,"옷 삭제",Toast.LENGTH_LONG).show();
@@ -77,6 +77,7 @@ public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ViewHold
             });
 
         }
+
     }
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
