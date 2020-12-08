@@ -26,7 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class commentActivity extends AppCompatActivity {
+public class CommentActivity extends AppCompatActivity {
 
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
@@ -99,7 +99,7 @@ public class commentActivity extends AppCompatActivity {
         commentAdapter = new CommentAdapter(arrayList);
         recyclerViewComment.setAdapter(commentAdapter);
 
-        databaseReference.child("Articles").child(mUniv).child(articleID).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("Articles").child(articleID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 article = dataSnapshot.getValue(Article.class);
@@ -120,12 +120,12 @@ public class commentActivity extends AppCompatActivity {
         if(image.equals("")){
             articleimage.setVisibility(View.GONE);
         }else{
-            Glide.with(commentActivity.this).load(image).into(articleimage);
+            Glide.with(CommentActivity.this).load(image).into(articleimage);
         }
     }
 
     private void viewComments() {
-        databaseReference.child("Articles").child(mUniv).child(articleID).child("Comments").addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("Articles").child(articleID).child("Comments").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
@@ -160,13 +160,13 @@ public class commentActivity extends AppCompatActivity {
         c.add(Calendar.DATE, 7);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 
-        Comment comment = new Comment(Long.toString(now), user.getUserUniv(), user.getUserName(), textComment, dateFormat.format(c.getTime()));
-        databaseReference.child("Articles").child(user.getUserUniv()).child(articleID).child("Comments").child(Long.toString(now)).setValue(comment);
+        Comment comment = new Comment(Long.toString(now), user.getUserName(), textComment, dateFormat.format(c.getTime()));
+        databaseReference.child("Articles").child(articleID).child("Comments").child(Long.toString(now)).setValue(comment);
         ToastText("작성 완료되었습니다.");
         func();
     }
 
     private void ToastText(String text) {
-        Toast.makeText(commentActivity.this, text, Toast.LENGTH_SHORT).show();
+        Toast.makeText(CommentActivity.this, text, Toast.LENGTH_SHORT).show();
     }
 }

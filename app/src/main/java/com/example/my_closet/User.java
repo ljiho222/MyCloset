@@ -3,8 +3,8 @@ package com.example.my_closet;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private String userName;
-    private String uid;
+    public String userName;
+    public String uid;
 
     public User(){
         userName="";
