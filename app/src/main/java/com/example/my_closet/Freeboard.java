@@ -16,6 +16,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -84,6 +85,8 @@ public class Freeboard extends AppCompatActivity implements View.OnClickListener
     private boolean isFabOpen=false;
     private FloatingActionButton fab;
 
+    private int temperature;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,7 +106,6 @@ public class Freeboard extends AppCompatActivity implements View.OnClickListener
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
-            int temperature;
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -122,6 +124,7 @@ public class Freeboard extends AppCompatActivity implements View.OnClickListener
             }
         });
 
+
         //AsyncTask는 execute()명령어를 통해 실행함.
         new Freeboard.weatherTask().execute();
 
@@ -131,11 +134,11 @@ public class Freeboard extends AppCompatActivity implements View.OnClickListener
 
 
         initPalette();
-        func();
+        func(temperature);
 
 
         fab=(FloatingActionButton)findViewById(R.id.mypage_fab);
-
+       // fab.setColorFilter(Color.BLACK);
         fab.setOnClickListener(this);
 
         swipeRefreshLayout.setColorSchemeResources(
@@ -148,7 +151,7 @@ public class Freeboard extends AppCompatActivity implements View.OnClickListener
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                func();
+                func(temperature);
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
@@ -266,7 +269,7 @@ public class Freeboard extends AppCompatActivity implements View.OnClickListener
         swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe_layout);
     }
 
-    private void func() {
+    private void func(int tem) {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("정보를 불러오는 중입니다");
         progressDialog.show();
@@ -275,24 +278,145 @@ public class Freeboard extends AppCompatActivity implements View.OnClickListener
         articleAdapter = new ArticleAdapter(arrayList);
         recyclerViewFreeBoard.setAdapter(articleAdapter);
 
-        databaseReference.child("Articles").child(mUniv).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Article article = snapshot.getValue(Article.class);
-                    arrayList.add(article);
+
+        if(tem<=0) {
+            databaseReference.child("Articles").child("0").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Article article = snapshot.getValue(Article.class);
+                        arrayList.add(article);
+                    }
+                    Log.e("freeboardarraylist", "" + arrayList.size());
+                    Collections.reverse(arrayList);
+                    articleAdapter.notifyDataSetChanged();
+                    progressDialog.dismiss();
                 }
-                Log.e("freeboardarraylist",""+arrayList.size());
-                Collections.reverse(arrayList);
-                articleAdapter.notifyDataSetChanged();
-                progressDialog.dismiss();
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+        }
+
+        else if(tem>0&&tem<=6) {
+            databaseReference.child("Articles").child("1").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Article article = snapshot.getValue(Article.class);
+                        arrayList.add(article);
+                    }
+                    Log.e("freeboardarraylist", "" + arrayList.size());
+                    Collections.reverse(arrayList);
+                    articleAdapter.notifyDataSetChanged();
+                    progressDialog.dismiss();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+        else if(tem>6&&tem<=11) {
+            databaseReference.child("Articles").child("2").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Article article = snapshot.getValue(Article.class);
+                        arrayList.add(article);
+                    }
+                    Log.e("freeboardarraylist", "" + arrayList.size());
+                    Collections.reverse(arrayList);
+                    articleAdapter.notifyDataSetChanged();
+                    progressDialog.dismiss();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }else if(tem>11&&tem<=17) {
+            databaseReference.child("Articles").child("3").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Article article = snapshot.getValue(Article.class);
+                        arrayList.add(article);
+                    }
+                    Log.e("freeboardarraylist", "" + arrayList.size());
+                    Collections.reverse(arrayList);
+                    articleAdapter.notifyDataSetChanged();
+                    progressDialog.dismiss();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }else if(tem>17&&tem<=24) {
+            databaseReference.child("Articles").child("4").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Article article = snapshot.getValue(Article.class);
+                        arrayList.add(article);
+                    }
+                    Log.e("freeboardarraylist", "" + arrayList.size());
+                    Collections.reverse(arrayList);
+                    articleAdapter.notifyDataSetChanged();
+                    progressDialog.dismiss();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }else if(tem>24&&tem<=30) {
+            databaseReference.child("Articles").child("5").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Article article = snapshot.getValue(Article.class);
+                        arrayList.add(article);
+                    }
+                    Log.e("freeboardarraylist", "" + arrayList.size());
+                    Collections.reverse(arrayList);
+                    articleAdapter.notifyDataSetChanged();
+                    progressDialog.dismiss();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }else if(tem>30) {
+            databaseReference.child("Articles").child("6").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Article article = snapshot.getValue(Article.class);
+                        arrayList.add(article);
+                    }
+                    Log.e("freeboardarraylist", "" + arrayList.size());
+                    Collections.reverse(arrayList);
+                    articleAdapter.notifyDataSetChanged();
+                    progressDialog.dismiss();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
     }
 
     @Override

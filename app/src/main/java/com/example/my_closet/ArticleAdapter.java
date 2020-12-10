@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -63,7 +64,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.CustomVi
         holder.textViewUserName.setText(article.getUserID());
         holder.textViewContent.setText(article.getContent());
         Log.e("자유게시판 사진", article.getImage().toString());
-        Log.e("arrayList",""+article.getArticleID());
         Log.e("arrayList",""+article.getImage().equals(""));
 
 
@@ -299,7 +299,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.CustomVi
 
         protected LinearLayout linearDelete;
         protected TextView textViewUserName, textViewContent, textViewTheNumberOfLovers, textViewEndDate;
-        protected Button buttonUser, buttonDelete, buttonAddLover, buttonAddComment, buttonAddReporter;
+        protected ImageButton buttonUser, buttonDelete, buttonAddLover, buttonAddComment, buttonAddReporter;
         protected ImageView imageView;
         protected CardView mView;
 
@@ -314,7 +314,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.CustomVi
             //this.textViewEndDate = (TextView)itemView.findViewById(R.id.textViewEndDate);
 
             //this.buttonUser = (Button)itemView.findViewById(R.id.buttonUser);
-            this.buttonDelete = (Button)itemView.findViewById(R.id.buttonDelete);
+            this.buttonDelete = itemView.findViewById(R.id.buttonDelete);
             //this.buttonAddLover = (Button)itemView.findViewById(R.id.buttonAddLover);
             //this.buttonAddComment = (Button)itemView.findViewById(R.id.buttonAddComment);
             //this.buttonAddReporter = (Button)itemView.findViewById(R.id.buttonAddReporter);

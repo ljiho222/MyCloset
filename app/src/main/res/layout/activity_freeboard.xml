@@ -118,6 +118,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -126,7 +127,7 @@
                     android:id="@+id/seekBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="5"
+                    android:layout_weight="8"
                     android:max="35"
                     android:min="-5" />
 
@@ -134,6 +135,9 @@
                     android:id="@+id/tempera"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/wemakepricebold"
                     android:layout_weight="1" />
             </LinearLayout>
 
@@ -149,9 +153,9 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerViewFreeBoard"
-                        android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        />
                 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
             </LinearLayout>
 
@@ -163,10 +167,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="40dp"
-            android:clickable="true"
-            android:background="@drawable/add"/>
-
+            android:layout_marginBottom="30dp"
+            app:backgroundTint="@color/colorBright"
+            android:clickable="true"/>
 
     </FrameLayout>
 

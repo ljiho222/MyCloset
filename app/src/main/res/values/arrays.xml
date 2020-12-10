@@ -128,13 +128,13 @@
     </string-array>
 
     <string-array name="temper">
-        <item>반바지</item>
-        <item>청바지</item>
-        <item>면바지</item>
-        <item>슬랙스</item>
-        <item>치마</item>
-        <item>트레이닝복</item>
+        <item>0°C 이하</item>
+        <item>0°C~6°C</item>
+        <item>6°C~11°C</item>
+        <item>11°C~17°C</item>
+        <item>17°C~24°C</item>
+        <item>24°C~30°C</item>
+        <item>30°C 이상</item>
     </string-array>
-
 
 </resources>

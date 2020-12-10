@@ -21,7 +21,7 @@ public class MainActivity extends TabActivity {
         tabHost.addTab(tabHost.newTabSpec("Closet").setIndicator("CLOSET").setContent(new Intent(this,ClosetMain.class).putExtra("userInfo", user)));
 
         //두번째 탭
-        tabHost.addTab(tabHost.newTabSpec("Freeboard").setIndicator("FREEBOARD").setContent(new Intent(this,Freeboard.class)));
+        tabHost.addTab(tabHost.newTabSpec("Freeboard").setIndicator("FREEBOARD").setContent(new Intent(this,Freeboard.class).putExtra("userInfo", user)));
 
 
 

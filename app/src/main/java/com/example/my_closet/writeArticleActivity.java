@@ -1,11 +1,5 @@
 package com.example.my_closet;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
-import androidx.loader.content.CursorLoader;
-
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -21,9 +15,12 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.Continuation;
@@ -47,10 +44,16 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
+import androidx.loader.content.CursorLoader;
+
 public class writeArticleActivity extends AppCompatActivity {
 
-    String API = "7363e45fdc7cb5ea14d3049b8175c7d0";
-    private
+    ArrayAdapter<CharSequence> adspin1;
+    Integer position1;
     private EditText contents;
     private Button btn_save;
     private Button camera;
@@ -83,11 +86,28 @@ public class writeArticleActivity extends AppCompatActivity {
         btn_save = findViewById(R.id.btn_save);
         camera = this.findViewById(R.id.camera);
         selectedImage = findViewById(R.id.selectedImage);
+        final Spinner spin1 = (Spinner)findViewById(R.id.temp_spinner);//온도 선택 스피너
 
         user = (User)getIntent().getSerializableExtra("userInformation");
+        //userInformation
 
         tedPermission();
 
+        //온도 스피너
+        adspin1=ArrayAdapter.createFromResource(this,R.array.temper,android.R.layout.simple_spinner_dropdown_item);
+        adspin1.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+
+        spin1.setAdapter(adspin1);
+        spin1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                position1=i;
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });//어댑터 값들을 스피너에 넣기
 
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +126,7 @@ public class writeArticleActivity extends AppCompatActivity {
 
                 btn_save.setEnabled(false);
                 Long now1 = System.currentTimeMillis();
-                article = new Article(Long.toString(now1),  user.getUserName(), contents.getText().toString(), "", dateFormat.format(c.getTime()));
+                article = new Article(Long.toString(now1), user.getUserName(), contents.getText().toString(), "", position1);
                 if(file!=null){
                     upload(file, now1);
                 }
@@ -118,7 +138,7 @@ public class writeArticleActivity extends AppCompatActivity {
     }
 
     public void uploadArticle(Article article,Long now1){
-        databaseReference.child("Articles").child(Long.toString(now1)).setValue(article).addOnCompleteListener(new OnCompleteListener<Void>() {
+        databaseReference.child("Articles").child(position1.toString()).child(Long.toString(now1)).setValue(article).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 Log.v("123213", "finish");
@@ -162,23 +182,29 @@ public class writeArticleActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Uri> task) {
                         if (task.isSuccessful()) {
-                            Log.v("123123", "success");
-                            downloadUri = task.getResult();
-                            c.setTimeInMillis(now1);
-                            c.add(Calendar.DATE, 7);
-                            Log.v("123123", "before null");
-                            assert downloadUri != null;
-                            Log.v("123123", "after null");
-                            article.setImage(downloadUri.toString());
-                            databaseReference.child("Articles").child(user.getUserUniv()).child(Long.toString(now1)).setValue(article).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            task.addOnCompleteListener(new OnCompleteListener<Uri>() {
                                 @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    Log.v("123213", "finish");
-                                    Toast.makeText(writeArticleActivity.this,"업로드 완료",Toast.LENGTH_SHORT).show();
-                                    finish();
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    if(task.isSuccessful()){
+                                        downloadUri =  task.getResult();
+                                        Log.v("123123", "success");
+                                        c.setTimeInMillis(now1);
+                                        c.add(Calendar.DATE, 7);
+                                        Log.v("123123", "before null");
+                                        assert downloadUri != null;
+                                        Log.v("123123", "after null");
+                                        article.setImage(downloadUri.toString());
+                                        databaseReference.child("Articles").child(position1.toString()).child(Long.toString(now1)).setValue(article).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                Log.v("123213", "finish");
+                                                Toast.makeText(writeArticleActivity.this,"업로드 완료",Toast.LENGTH_SHORT).show();
+                                                finish();
+                                            }
+                                        });
+                                    }
                                 }
                             });
-
                         } else {
                             // Handle failures
                             // ...
@@ -282,11 +308,12 @@ public class writeArticleActivity extends AppCompatActivity {
         switch (requestCode){
             case PICK_FROM_ALBUM : {
                 //앨범에서 가져오기
-                Uri uri=data.getData();
-                if(uri!=null){
-                    file=Uri.fromFile(new File(getPath(uri)));
+                //Uri uri=data.getData();
+                file = data.getData();
+                if(file!=null){
+                   // file=Uri.fromFile(new File(getPath(uri)));
                     try{
-                        Bitmap bitmap=MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
+                        Bitmap bitmap=MediaStore.Images.Media.getBitmap(getContentResolver(),file);
                         selectedImage.setImageBitmap(bitmap);
                         selectedImage.setVisibility(View.VISIBLE);
                     } catch (FileNotFoundException e) {
