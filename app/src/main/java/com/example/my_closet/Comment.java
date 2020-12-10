@@ -19,7 +19,7 @@ public class Comment {
         //reporters = new ArrayList<>();
     }
 
-    Comment(String commentID, String userID, String content, String endDate) {
+    Comment(String commentID, String userID, String content) {
         this.commentID = commentID;
         this.userID = userID;
         this.content = content;

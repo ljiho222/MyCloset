@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginBottom="12dp">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -30,23 +31,8 @@
         android:textSize="24dp"
         android:layout_gravity="center"
         android:fontFamily="@font/wemakepriceregular"
-        android:padding="12dp"/>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:padding="12dp"
+        />
 
-        <Button
-            android:id="@+id/buttonComplete"
-            android:text="확인"
-            android:fontFamily="@font/wemakepriceregular"
-            android:textSize="15dp"
-            android:background="@drawable/round_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:onClick="onClick"/>
-    </LinearLayout>
 
 </LinearLayout>

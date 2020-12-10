@@ -126,4 +126,15 @@
         <item>치마</item>
         <item>트레이닝복</item>
     </string-array>
+
+    <string-array name="temper">
+        <item>반바지</item>
+        <item>청바지</item>
+        <item>면바지</item>
+        <item>슬랙스</item>
+        <item>치마</item>
+        <item>트레이닝복</item>
+    </string-array>
+
+
 </resources>

@@ -61,7 +61,7 @@ public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ViewHold
                     final int pos = getAdapterPosition() ;
 
                     AlertDialog.Builder builder=new AlertDialog.Builder(mContext).setView(dialogView)
-                            .setPositiveButton("", new DialogInterface.OnClickListener() {
+                            .setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     //Log.e("123123", String.valueOf(Clothess.get(pos).getKey()));
@@ -79,6 +79,9 @@ public class ClothesAdapter extends RecyclerView.Adapter<ClothesAdapter.ViewHold
         }
 
     }
+
+
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Glide.with(mContext).load(Clothess.get(position).getUrl()).into(((ViewHolder)holder).imageView);

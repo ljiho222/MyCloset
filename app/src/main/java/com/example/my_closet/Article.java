@@ -12,6 +12,7 @@ public class Article {
     //private List<String> reporters;
     private String image;
     //private String endDate;
+    private int temp;
 
     Article() {
         userID = "";
@@ -21,11 +22,12 @@ public class Article {
         //reporters = new ArrayList<>();
     }
 
-    Article(String articleID, String userID, String content, String image, String endDate) {
+    Article(String articleID, String userID, String content, String image, int temp) {
         this.articleID = articleID;
         this.userID = userID;
         this.content = content;
         this.image = image;
+        this.temp = temp;
         //lovers = new ArrayList<>();
         //reporters = new ArrayList<>();
         //this.endDate = endDate;
@@ -55,7 +57,14 @@ public class Article {
         this.content = content;
     }
 
-    /*public List<String> getLovers() {
+    public int getTemp() {
+        return temp;
+    }
+
+    public void setTemp(int temp) {
+        this.temp = temp;
+    }
+/*public List<String> getLovers() {
         return lovers;
     }
 

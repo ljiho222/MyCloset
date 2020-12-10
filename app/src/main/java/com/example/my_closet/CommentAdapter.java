@@ -86,7 +86,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CustomVi
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    databaseReference.child("Articles").child(mUniv).child(articleID).child("Comments").child(comment.getCommentID()).removeValue();
+                                    databaseReference.child("Articles").child(articleID).child("Comments").child(comment.getCommentID()).removeValue();
                                     Toast.makeText(v.getContext(), "삭제되었습니다", Toast.LENGTH_SHORT).show();
                                 }
                             })

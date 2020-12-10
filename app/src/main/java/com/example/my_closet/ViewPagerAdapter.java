@@ -64,10 +64,10 @@ public class ViewPagerAdapter extends PagerAdapter {
             @Override
             public boolean onLongClick(View view) {
                 AlertDialog.Builder builder=new AlertDialog.Builder(mContext).setView(dialogView)
-                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                Log.e("123123", String.valueOf(Newclosets.get(position).getName()));
+                                //Log.e("123123", String.valueOf(Newclosets.get(position).getName()));
                                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Closets").child(user.getUserName()).child(Newclosets.get(position).getName());
                                 reference.removeValue();
                                 Toast.makeText(mContext,"옷장 삭제",Toast.LENGTH_LONG).show();

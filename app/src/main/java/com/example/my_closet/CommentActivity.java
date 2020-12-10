@@ -22,8 +22,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Comment;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -48,7 +46,7 @@ public class CommentActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;//정보 부르는거
 
     private LinearLayoutManager linearLayoutManager;
-    private ArrayList<Comment> arrayList;
+    private ArrayList<com.example.my_closet.Comment> arrayList;
     private CommentAdapter commentAdapter;
 
     @Override
@@ -131,7 +129,7 @@ public class CommentActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Comment comment = snapshot.getValue(Comment.class);
+                    com.example.my_closet.Comment comment = snapshot.getValue(Comment.class);
                     arrayList.add(comment);
                 }
 
@@ -157,12 +155,8 @@ public class CommentActivity extends AppCompatActivity {
         editTextWriteComment.setText("");
 
         Long now = System.currentTimeMillis();
-        Calendar c = Calendar.getInstance();
-        c.setTimeInMillis(now);
-        c.add(Calendar.DATE, 7);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 
-        Comment comment = new Comment(Long.toString(now), user.getUserName(), textComment, dateFormat.format(c.getTime()));
+        com.example.my_closet.Comment comment = new com.example.my_closet.Comment(Long.toString(now),user.getUserName(),textComment);
         databaseReference.child("Articles").child(articleID).child("Comments").child(Long.toString(now)).setValue(comment);
         ToastText("작성 완료되었습니다.");
         func();

@@ -27,6 +27,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,7 +67,6 @@ public class Freeboard extends AppCompatActivity implements View.OnClickListener
     private RecyclerView recyclerViewFreeBoard;
     private SwipeRefreshLayout swipeRefreshLayout;
 
-    //
     public static Context context;
     public User user;
     private Intent intent;
@@ -78,9 +78,8 @@ public class Freeboard extends AppCompatActivity implements View.OnClickListener
     private int thiscp,thisgp;
     public String mUniv="";
 
-    private TextView textMypage,textName;
-    private ImageView img_navi;
-    private ImageView img_logout;
+    private SeekBar seekBar;
+    private TextView tempera;
 
     private boolean isFabOpen=false;
     private FloatingActionButton fab;
@@ -95,14 +94,36 @@ public class Freeboard extends AppCompatActivity implements View.OnClickListener
         tempTxt = findViewById(R.id.temp);//현재 온도
 
         img = findViewById(R.id.w_image);//날씨 아이콘
-        simg1=findViewById(R.id.simg1);
-        simg2=findViewById(R.id.simg2);
-        simg3=findViewById(R.id.simg3);
 
         plusTxt=findViewById(R.id.plus_txt); //오늘 날씨에 대한 코멘트
 
+        seekBar = findViewById(R.id.seekBar);
+
+        tempera = findViewById(R.id.tempera);
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            int temperature;
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                tempera.setText(String.valueOf(seekBar.getProgress()));
+                temperature = progress;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                tempera.setText(String.valueOf(temperature));
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                tempera.setText(String.valueOf(temperature));
+            }
+        });
+
         //AsyncTask는 execute()명령어를 통해 실행함.
-        new Style.weatherTask().execute();
+        new Freeboard.weatherTask().execute();
 
 
         context = this;
@@ -167,7 +188,6 @@ public class Freeboard extends AppCompatActivity implements View.OnClickListener
                 //String updatedAtText = new SimpleDateFormat("yyyy/MM/dd hh:mm", Locale.getDefault()).format(currentTime);
 
 //main object에 접근
-                Integer temp = main.getInt("temp");
                 Integer temper = main.getInt("temp");
 
 
@@ -222,7 +242,7 @@ public class Freeboard extends AppCompatActivity implements View.OnClickListener
                 addressTxt.setText(address);
                 status_mainTxt.setText(weatherMain);
                 tempTxt.setText(temper+"도");
-
+                tempera.setText(temper.toString());
 
 
                 /* Views populated, Hiding the loader, Showing the main design */
